@@ -1,0 +1,44 @@
+{
+  "stages": [
+    {
+      "id": "01_base_200k",
+      "run": "79e3c655",
+      "train": 171845,
+      "corpus": 206016,
+      "selected_step": 3551,
+      "epoch": 0.6612470540312491,
+      "planned_epochs": 3,
+      "completed": false
+    },
+    {
+      "id": "02_correction_10k",
+      "run": "u10k-7c8dd4ae7f962a9d",
+      "train": 10000,
+      "selected_step": 313,
+      "epoch": 1,
+      "parent_step": 3551,
+      "completed": true
+    },
+    {
+      "id": "03_real_reviews",
+      "run": "ureal-14a56cf24f5b1116",
+      "train": 12541,
+      "source_rows": 13955,
+      "selected_step": 392,
+      "epoch": 1,
+      "parent_step": 313,
+      "completed": true
+    },
+    {
+      "id": "04_quality_5k",
+      "run": "uq5k-c22f2b158d306bfc",
+      "train": 5000,
+      "selected_step": 157,
+      "epoch": 1,
+      "parent_step": 392,
+      "completed": true
+    }
+  ],
+  "common_all_four_benchmark": false,
+  "new_training_run": false
+}
