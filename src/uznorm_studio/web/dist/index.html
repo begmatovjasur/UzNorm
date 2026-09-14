@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="uz">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Lokal ByT5 modeli yordamida o‘zbekcha matnni tuzatish.">
+<title>UzNorm — Matnni tuzatish</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><main class="app">
+<header><a class="brand" href="/" aria-label="UzNorm bosh sahifa"><span class="brand-icon">U<small>z</small></span>UzNorm</a><span class="local">● Kompyuteringizda ishlaydi</span></header>
+<section class="intro"><h1>Matnni tuzatish</h1><p>Matningizni kiriting va model taklifini ko‘ring.</p></section>
+<div class="workbench">
+<section class="panel"><div class="panel-head"><label for="input">Sizning matningiz</label><button id="clear" class="text-button" type="button">Tozalash</button></div>
+<textarea id="input" spellcheck="false" placeholder="Matningizni shu yerga yozing…" aria-describedby="input-hint bytes"></textarea>
+<div class="panel-foot"><span id="input-hint">Ctrl + Enter bilan ham tekshirish mumkin</span><span id="bytes">0 / 511 bayt</span></div></section>
+<section class="panel result"><div class="panel-head"><h2>Model taklifi</h2><button id="copy" class="text-button" type="button" disabled>Nusxa olish</button></div>
+<div id="output" class="output empty" aria-live="polite">Tuzatilgan matn shu yerda ko‘rinadi.</div><div class="panel-foot"><label class="check"><input id="highlight" type="checkbox" checked>O‘zgarishlarni ajratish</label></div></section></div>
+<div class="actions"><p id="status" role="status">Birinchi tekshirishda modelni yuklash biroz vaqt oladi.</p><button id="correct" class="primary" type="button" disabled>Matnni tuzatish <span aria-hidden="true">↗</span></button></div>
+<footer><span>Matn tashqi xizmatlarga yuborilmaydi.</span><span>Model taklifini, ayniqsa ma’no, nom va raqamlarni tekshiring.</span></footer>
+</main></body></html>

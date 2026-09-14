@@ -1,0 +1,22 @@
+'use strict';
+const $=id=>document.getElementById(id);
+let token='',busy=false,last=null;
+const bytes=text=>new TextEncoder().encode(text).length;
+function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
+function count(){const n=bytes($('input').value);$('bytes').textContent=n+' / 511 bayt';$('bytes').classList.toggle('error',n>511);$('correct').disabled=busy||!token||!$('input').value.trim()||n>511;}
+function setBusy(value){busy=value;$('input').disabled=value;$('clear').disabled=value;count();}
+function empty(){last=null;$('output').textContent='Tuzatilgan matn shu yerda ko‘rinadi.';$('output').classList.add('empty');$('copy').disabled=true;}
+function render(){const out=$('output');out.replaceChildren();out.classList.remove('empty');if($('highlight').checked){for(const change of last.diff||[]){if(!change.after)continue;const part=document.createElement(change.kind==='equal'?'span':'mark');part.textContent=change.after;out.append(part);}}else out.textContent=last.output;$('copy').disabled=false;}
+async function api(path,data){const response=await fetch('/api/'+path,{method:data===undefined?'GET':'POST',headers:{'Content-Type':'application/json','X-UzNorm-Session':token},...(data===undefined?{}:{body:JSON.stringify(data)})});const value=await response.json();if(!response.ok)throw Error(value.error||'So‘rov bajarilmadi.');return value;}
+const delay=()=>new Promise(resolve=>setTimeout(resolve,650));
+async function awaitJob(job){for(let i=0;i<900;i++){await delay();const state=await api('status');if(state.job!==job)throw Error('Boshqa oynada yangi so‘rov boshlandi.');status(state.message);if(!state.busy){if(state.error)throw Error(state.error);return state.result;}}throw Error('Javob kechikmoqda. Dastur oynasidagi holatni tekshiring.');}
+async function correctText(text){if(busy)throw Error('Joriy tekshirish tugashini kuting.');if(typeof text!=='string'||!text.trim()||bytes(text)>511)throw Error('1–511 UTF-8 baytli matn kiriting.');if(!token)throw Error('Lokal dastur hali tayyor emas.');$('input').value=text;empty();setBusy(true);status('Matn tekshirilmoqda… Birinchi so‘rovda model xotiraga yuklanadi.');try{const job=await api('correct',{text});last=await awaitJob(job.job);render();status(last.ended_with_eos?'Tayyor.':'Javob uzunlik chegarasida to‘xtagan bo‘lishi mumkin. Qisqaroq matn kiriting.',!last.ended_with_eos);return last;}finally{setBusy(false);}}
+$('input').addEventListener('input',()=>{if(last)empty();count();});
+$('input').addEventListener('keydown',event=>{if(event.ctrlKey&&event.key==='Enter'){event.preventDefault();$('correct').click();}});
+$('correct').addEventListener('click',()=>correctText($('input').value).catch(error=>status(error.message,true)));
+$('clear').addEventListener('click',()=>{$('input').value='';empty();count();$('input').focus();status('Matn kiriting.');});
+$('highlight').addEventListener('change',()=>{if(last)render();});
+$('copy').addEventListener('click',()=>{if(last)navigator.clipboard.writeText(last.output).then(()=>status('Model taklifi nusxalandi.')).catch(()=>status('Javobni belgilab, qo‘lda nusxa oling.',true));});
+async function init(){try{const session=await fetch('/api/session').then(r=>r.json());if(!session.token)throw Error('Sessiya ochilmadi.');token=session.token;const state=await api('status');if(state.busy){setBusy(true);status('Oldingi so‘rov yakunlanmoqda…');await awaitJob(state.job);}status(state.ready?'Matn kiriting.':'Birinchi tekshirishda modelni yuklash biroz vaqt oladi.');}catch(error){status('Lokal dastur bilan aloqa yo‘q. web.cmd ishlayotganini tekshirib, sahifani yangilang.',true);}finally{setBusy(false);}}
+init();
+if(document.modelContext?.registerTool){const life=new AbortController();try{Promise.resolve(document.modelContext.registerTool({name:'correct_uzbek_text',title:'O‘zbekcha matnni tuzatish',description:'Ko‘rinadigan matn maydonida lokal ByT5 modelining taklifini ko‘rsatadi. Trening va tashqi API yo‘q.',inputSchema:{type:'object',properties:{text:{type:'string'}},required:['text'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},async execute(input){const result=await correctText(input.text);return {output:result.output,ended_with_eos:result.ended_with_eos};}},{signal:life.signal})).catch(()=>{});}catch(_){}window.addEventListener('pagehide',()=>life.abort(),{once:true});}
