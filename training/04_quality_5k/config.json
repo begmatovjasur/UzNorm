@@ -1,0 +1,14 @@
+{
+  "epochs": 1,
+  "micro_batch": 2,
+  "accumulation": 16,
+  "learning_rate": 0.00001,
+  "warmup_ratio": 0.05,
+  "save_steps": 25,
+  "optimizer": "adafactor",
+  "precision": "bf16",
+  "seed": 3407,
+  "max_source_tokens": 512,
+  "max_target_tokens": 512,
+  "publication_note": "Documented training settings; not a complete runnable private configuration."
+}

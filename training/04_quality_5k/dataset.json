@@ -1,0 +1,44 @@
+{
+  "requested_quotas": {
+    "lexical": 2000,
+    "chat_mixed": 1000,
+    "format": 750,
+    "identity": 1000,
+    "protected_entities": 250
+  },
+  "counts": {
+    "lexical": 2000,
+    "chat_mixed": 1000,
+    "format": 750,
+    "identity": 1000,
+    "protected_entities": 250
+  },
+  "development": 60,
+  "final_test": 62,
+  "human_gold": false,
+  "source_kinds": {
+    "publisher_mcq_distractor_adaptation": 1963,
+    "reaudited_real_train": 1769,
+    "synthetic_from_reviewed_target": 1018,
+    "assistant_authored_template_expansion": 250
+  },
+  "source_names": {
+    "uzlib": 2349,
+    "uzum": 822,
+    "commeta": 823,
+    "google_play": 756,
+    "controlled_entities": 250
+  },
+  "text_kinds": {
+    "word": 1626,
+    "sentence": 2159,
+    "multi_sentence": 661,
+    "fragment": 554
+  },
+  "natural_rows_reused_from_prior_train": 1769,
+  "distinct_target_texts": 2889,
+  "distinct_seed_families": 2682,
+  "max_family_multiplicity": 9,
+  "old_sources_unchanged": true,
+  "publication_note": "Aggregate fields only. Raw texts, source paths and private manifests are excluded."
+}
