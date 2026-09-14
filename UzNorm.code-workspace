@@ -1,0 +1,17 @@
+{
+  "folders": [{"name": "UzNorm", "path": "."}],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+    "python.analysis.extraPaths": ["./src"],
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"],
+    "files.encoding": "utf8",
+    "files.insertFinalNewline": true,
+    "editor.rulers": [110],
+    "search.exclude": {"models/**": true, "logs/**": true, ".venv/**": true},
+    "files.watcherExclude": {"**/models/**": true, "**/logs/**": true},
+    "workbench.startupEditor": "readme"
+  },
+  "extensions": {"recommendations": ["ms-python.python", "ms-python.debugpy", "ms-toolsai.jupyter"]}
+}

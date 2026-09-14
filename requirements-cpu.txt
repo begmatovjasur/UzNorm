@@ -1,0 +1,7 @@
+# Exact versions already available in the current Windows CPU environment.
+# For a clean venv, install torch from the CPU index separately (see README).
+transformers==4.57.1
+safetensors==0.8.0
+tokenizers==0.22.2
+numpy==2.3.5
+rapidfuzz==3.14.1

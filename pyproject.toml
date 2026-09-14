@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uznorm-studio"
+version = "1.0.0"
+description = "UzNorm: offline Uzbek text correction with the verified quality5k ByT5 model"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = ["torch>=2.6,<3", "transformers==4.57.1", "safetensors>=0.5,<1", "rapidfuzz>=3.14,<4"]
+
+[project.scripts]
+uznorm-studio = "uznorm_studio.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+uznorm_studio = ["model-policy.json", "web/dist/*"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"

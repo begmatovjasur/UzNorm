@@ -1,0 +1,3 @@
+# The local website uses the Python standard library; paired evaluation uses RapidFuzz.
+-r requirements-cpu.txt
+rapidfuzz==3.14.1
