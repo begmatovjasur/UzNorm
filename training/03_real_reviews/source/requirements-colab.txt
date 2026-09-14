@@ -1,0 +1,5 @@
+# Keep Colab's CUDA-compatible torch installation; preflight requires torch >= 2.6.
+transformers==4.57.1
+accelerate==1.10.1
+wandb==0.22.3
+rapidfuzz==3.14.1
