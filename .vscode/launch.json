@@ -1,0 +1,8 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {"name": "UzNorm: lokal sayt", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/studio.py", "args": ["web"], "cwd": "${workspaceFolder}", "console": "integratedTerminal", "env": {"PYTHONIOENCODING": "utf-8", "PYTHONDONTWRITEBYTECODE": "1"}, "justMyCode": true},
+    {"name": "UzNorm: interaktiv terminal", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/studio.py", "args": ["correct"], "cwd": "${workspaceFolder}", "console": "integratedTerminal", "justMyCode": true},
+    {"name": "UzNorm: muhit tekshiruvi", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/studio.py", "args": ["doctor"], "cwd": "${workspaceFolder}", "console": "integratedTerminal"}
+  ]
+}
