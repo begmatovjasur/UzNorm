@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "label": "ByT5 · Quality 5k · 157",
+  "binding": {
+    "uznorm_guard": "v1",
+    "run_id": "uq5k-c22f2b158d306bfc",
+    "signature": "c22f2b158d306bfcf88394e8f02f11cd60f22c3cd62155e4d26633c8c7ad5e30",
+    "storage_id": "b7613af8c2594e13a711145af74cab12"
+  },
+  "run_signature": "aeface919127117756bb5d9843c666463847c97f3f3a97fdda7c7b3d28234573",
+  "package_sha256": "d1039907d128ac3eaf952a0a6d716b29dff0d40111c258ec13d389c850fa9642",
+  "development_sha256": "50a4e04099b678eeac5adca5c95df578839c2504a339ace4aa4d121471fa4136",
+  "parent_run_id": "ureal-14a56cf24f5b1116",
+  "parent_step": 392,
+  "step": 157,
+  "epoch": 1,
+  "archive_kind": "final",
+  "download_url": "PRIVATE_ARTIFACT_LINK_OMITTED",
+  "model_directory": "quality5k-157"
+}
+
