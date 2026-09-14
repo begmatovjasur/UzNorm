@@ -1,0 +1,8 @@
+{
+  "counts": {
+    "train": 12541,
+    "validation": 688,
+    "test": 705
+  },
+  "publication_note": "Aggregate fields only. Raw texts, source paths and private manifests are excluded."
+}
